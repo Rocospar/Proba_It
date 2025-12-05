@@ -1,31 +1,55 @@
-import React, { useState } from 'react';
-import './App.css'; // Asigură-te că ai fișierul CSS pentru stiluri
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import AppRouter from './router';
 
 function App() {
-  // --- ZONA DE LOGICĂ (Javascript) ---
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Aici ținem minte dacă e logat
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const response = await fetch('http://localhost:1234/check-session', {
+          method: 'GET',
+          credentials: 'include'
+        });
+
+        const data = await response.json();
+        if (data.isLoggedIn) {
+          setIsLoggedIn(true);
+          setUsername(data.username);
+        }
+      } catch (err) {
+        console.error("Error checking session:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    checkSession();
+  }, []);
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Să nu dea refresh pagina
+    e.preventDefault(); 
 
     try {
-      // Facem cererea către Backend-ul tău de pe portul 1234
+      
       const response = await fetch('http://localhost:1234/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
 
-      // Verificăm răspunsul serverului (status: "Succes")
+     
       if (data.status === "Succes") {
-        // Dacă e ok, setăm variabila pe true -> React va schimba ecranul
+        
         setIsLoggedIn(true);
       } else {
-        alert(data.message); // Afișăm "Parola gresita" sau "Nu exista user"
+        alert(data.message); 
       }
     } catch (err) {
       console.error(err);
@@ -33,56 +57,34 @@ function App() {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch('http://localhost:1234/logout', {
+        method: 'POST',
+        credentials: 'include'
+      });
+      
       setIsLoggedIn(false);
       setUsername("");
       setPassword("");
+    } catch (err) {
+      console.error("Error logging out:", err);
+    }
   }
 
-  // --- ZONA DE GRAFICĂ (HTML) ---
-  
-  // Scenariul 1: Dacă s-a logat cu succes -> Arată conținutul site-ului
-  if (isLoggedIn) {
-      return (
-          <div className="background" style={{textAlign: 'center', paddingTop: '50px'}}>
-              <h1>🎉 Bine ai venit, {username}!</h1>
-              <p>Te-ai logat cu succes.</p>
-              <button 
-                onClick={handleLogout} 
-                style={{padding: '10px 20px', marginTop: '20px', cursor: 'pointer', backgroundColor: 'red', color: 'white', border: 'none'}}
-              >
-                Deconectare
-              </button>
-          </div>
-      );
+  if (loading) {
+    return <div style={{ padding: '20px' }}>Loading...</div>;
   }
 
-  // Scenariul 2: Dacă NU e logat -> Arată Formularul tău de Login
-  return (
-    <div className="background">
-      <div className="LoginSquare">
-        <h1>Login</h1>
-        
-        <form onSubmit={handleLogin}>
-          <label>Username</label>
-          <input 
-            type="text" 
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-
-          <label>Password</label>
-          <input 
-            type="password" 
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    </div>
-  );
+  return <AppRouter 
+    isLoggedIn={isLoggedIn}
+    username={username}
+    password={password}
+    setUsername={setUsername}
+    setPassword={setPassword}
+    handleLogin={handleLogin}
+    handleLogout={handleLogout}
+  />;
 }
 
 export default App;
