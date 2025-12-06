@@ -31,9 +31,37 @@ mongoose.connect("mongodb://localhost:27017/Proba_IT")
 
 const UserSchema = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    email: String,
+
 });
 const User = mongoose.model("users", UserSchema);
+
+
+
+
+
+
+app.post("/register", (req, res) => {
+    const { username, email, password } = req.body;
+    
+    User.findOne({ username: username })
+        .then(existingUser => {
+            if (existingUser) {
+                res.json({ status: "Error", message: "Username already taken" });
+            } else {
+                const newUser = new User({ username, email, password });
+                newUser.save()
+                    .then(user => {
+                        res.json({ status: "Success", message: "User created", user: user });
+                    })
+                    .catch(err => {
+                        res.json({ status: "Error", message: "Error creating user", error: err });
+                    });
+            }
+        });
+});
+
 
 
 
@@ -57,6 +85,11 @@ app.post("/login", (req, res) => {
         });
 });
 
+
+
+
+
+
 app.get("/check-session", (req, res) => {
     if (req.session.userId) {
         res.json({ 
@@ -70,6 +103,10 @@ app.get("/check-session", (req, res) => {
 
 
 
+
+
+
+
 app.post("/logout", (req, res) => {
     req.session.destroy((err) => {
         if (err) {
@@ -80,9 +117,7 @@ app.post("/logout", (req, res) => {
     });
 });
 
-
-
-    
 app.listen(1234, () => {
-    console.log("Serverul merge pe portul 1234");
+    console.log("Server running on port 1234");
 });
+
