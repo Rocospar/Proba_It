@@ -1,5 +1,6 @@
-    import React from 'react';
-    
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 function LoginPage ({ username, setUsername, password, setPassword, handleLogin }) {
     return (
     <div className="background">
@@ -22,6 +23,9 @@ function LoginPage ({ username, setUsername, password, setPassword, handleLogin 
           />
 
           <button type="submit">Login</button>
+          <div> 
+            <Link to="/register">Register</Link>
+          </div>
         </form>
       </div>
     </div>

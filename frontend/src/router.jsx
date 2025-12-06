@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import LoginPage from './components/Login';
+import RegisterPage from './components/Register';
 import HomePage from './components/Home';
 import ProfilePage from './components/Profile';
 import PostsPage from './components/Posts';
@@ -9,6 +10,7 @@ export function AppRouter({ isLoggedIn, username, password, setUsername, setPass
     return (
       <Router>
         <Routes>
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="*" element={
             <LoginPage 
               username={username}
@@ -37,6 +39,7 @@ export function AppRouter({ isLoggedIn, username, password, setUsername, setPass
         <Link to="/" className='home-button'>Home</Link>
         <Link to="/profile" className='home-button'>Profile</Link>
         <Link to="/posts" className='home-button'>Posts</Link>
+
         <button 
           onClick={handleLogout}
           style={{
