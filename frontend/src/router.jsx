@@ -5,6 +5,7 @@ import HomePage from './components/Home';
 import ProfilePage from './components/Profile';
 import PostsPage from './components/Posts';
 
+
 export function AppRouter({ isLoggedIn, username, password, setUsername, setPassword, handleLogin, handleLogout }) {
   if (!isLoggedIn) {
     return (
@@ -59,7 +60,8 @@ export function AppRouter({ isLoggedIn, username, password, setUsername, setPass
       {/* Page Routes */}
       <Routes>
         <Route path="/" element={<HomePage username={username} />} />
-        <Route path="/profile" element={<ProfilePage username={username} />} />
+        <Route path="/profile" element={
+        <ProfilePage  username={username} setGlobalUsername={setUsername} />}/>
         <Route path="/posts" element={<PostsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
