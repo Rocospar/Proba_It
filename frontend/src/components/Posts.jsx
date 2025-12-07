@@ -7,7 +7,7 @@ function PostsPage() {
   ]);
 
   return (
-    <div style={{ padding: '30px', maxWidth: '600px', margin: '0 auto' }}>
+    <div className="posts-container" style={{ padding: '30px', maxWidth: '600px', margin: '0 auto' }}>
       <h1>Posts</h1>
       <button style={{
         padding: '10px 20px',

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-// Notice we added 'setGlobalUsername' to the props so we can update the App
 function ProfilePage({ username, setGlobalUsername }) {
-  // 1. State to toggle "Edit Mode" on/off
   const [isEditing, setIsEditing] = useState(false);
 
-  // 2. State for the form fields
+  
   const [editName, setEditName] = useState(username);
-  const [editEmail, setEditEmail] = useState(''); // We will fetch this
+  const [editEmail, setEditEmail] = useState(''); 
   const [editPassword, setEditPassword] = useState('');
 
-  // 3. Load user data (Email) when page opens
   useEffect(() => {
     fetch("http://localhost:1234/user-data", { credentials: "include" })
       .then(res => res.json())
@@ -22,7 +19,6 @@ function ProfilePage({ username, setGlobalUsername }) {
       .catch(err => console.error("Error loading profile:", err));
   }, []);
 
-  // 4. Handle Saving Changes
   const handleSave = async () => {
     try {
       const response = await fetch("http://localhost:1234/update-profile", {
@@ -41,10 +37,10 @@ function ProfilePage({ username, setGlobalUsername }) {
       if (data.status === "Success") {
         alert("Saved successfully!");
         
-        // Update the username in the main App component
+        
         if (setGlobalUsername) setGlobalUsername(editName);
         
-        // Clear password and exit edit mode
+     
         setEditPassword(""); 
         setIsEditing(false); 
       } else {

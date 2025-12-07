@@ -28,15 +28,7 @@ export function AppRouter({ isLoggedIn, username, password, setUsername, setPass
 
   return (
     <Router>
-      {/* Navigation Bar */}
-      <nav style={{
-        padding: '15px',
-        backgroundColor: '#333',
-        display: 'flex',
-        gap: '20px',
-        alignItems: 'center',
-        color: 'white'
-      }}>
+      <nav className="header-bar">
         <Link to="/" className='home-button'>Home</Link>
         <Link to="/profile" className='home-button'>Profile</Link>
         <Link to="/posts" className='home-button'>Posts</Link>
@@ -45,26 +37,29 @@ export function AppRouter({ isLoggedIn, username, password, setUsername, setPass
           onClick={handleLogout}
           style={{
             marginLeft: 'auto',
-            padding: '8px 15px',
+            marginRight: '20px',
+            padding: '8px 10px',
             backgroundColor: 'red',
             color: 'white',
             border: 'none',
             borderRadius: '4px',
-            cursor: 'pointer'
+            cursor: 'pointer',
           }}
         >
           Logout
         </button>
       </nav>
 
-      {/* Page Routes */}
-      <Routes>
-        <Route path="/" element={<HomePage username={username} />} />
-        <Route path="/profile" element={
-        <ProfilePage  username={username} setGlobalUsername={setUsername} />}/>
-        <Route path="/posts" element={<PostsPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <div className="page-content">
+        <Routes>
+          <Route path="/" element={<HomePage username={username} />} />
+          <Route path="/profile" element={
+            <ProfilePage  username={username} setGlobalUsername={setUsername} />
+          }/>
+          <Route path="/posts" element={<PostsPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
