@@ -1,34 +1,58 @@
-## Serverul de frontend cat si cel de backend se pornesc simultan prin utilizarea comenzii: "npm start"
+Here is the translation of the documentation for the Rocospar/Proba_It project.
 
-### FRONTEND
+I have formatted it to be clean and ready to use in a README.md file.
 
-- In folderul src avem foldere:
-  - Folderul: "assets" care contine imagini (deocamdata poza de la profil), iar aici ar fi fost stocate imaginile pe care utilizatori si le-ar fi uploadat pe site (profile picture sau posts).
-  - Folderul: "components" acesta contine toate paginile web (ex: home,profile,login etc).
-  - Folderul: "models" care (va contine) formatul obiectelor (ex: Useri cu n campuri,).Acesta ar fi fost folosite in componente, pentru a nu fi intializate de fiecare data.
-  - Folderul: "services" care (va contine) servicii/functii care se folosesc pe mai multe pagini.
+Both the frontend and backend servers start simultaneously using the command: npm start
 
-- In app.jsx si router.jsx avem logica principala a frontendului.
-  - "app.jsx" se ocupa cu functiile de login / logout.
-  - "router.jsx" se ocupa de redirectionarea paginilor web.
-  - "app.css" contine toate elementele de design folosite in stilizarea paginilor, cat si animatii.
+FRONTEND
+In the src folder, we have the following directories:
 
----
+Folder: "assets"
 
-### BACKEND
+Contains images (currently the profile picture). This is where images uploaded by users (profile pictures or posts) would have been stored.
 
-- In folderul pentru backend avem file-ul "index.js" unde este gestionata logica pentru user:
-  - Conectarea cu baza de date.
-  - Crearea unei "scheme" pentru utilizator (username, password, email, etc).
-  - Realizarea "Login"-ului (verifica daca username-ul si parola sunt identice cu cele din baza de date).
-  - Verificarea sesiunii utilizatorului (verificarea cookie-ului).
-  - Realizarea "Logout"-ului
-  - Realizarea "Register"-ului
-  - Realizarea editarii profilului utilizatorului
+Folder: "components"
 
-### P.S. Work in progress:
-- In pagina "Posts", butonul POST este implementat dar nu face nimic.
-- In pagina "Home", nu exista feed.
-- In pagina "Profile", nu poti sa-ti editezi poza de profil.
-- Mesaje mai estetice.
-- Text Styling mai bun.
+Contains all web pages (e.g., home, profile, login, etc.).
+
+Folder: "models"
+
+(Will contain) object formats (e.g., Users with n fields). These would be used within components to avoid initializing them every time.
+
+Folder: "services"
+
+(Will contain) services/functions that are used across multiple pages.
+
+The main logic of the frontend is found in app.jsx and router.jsx:
+
+"app.jsx": Handles Login / Logout functions.
+
+"router.jsx": Handles web page routing/redirection.
+
+"app.css": Contains all design elements used for styling pages, as well as animations.
+
+BACKEND
+In the backend folder, we have the file "index.js", where the user logic is managed:
+
+Database connection.
+
+Creation of a user "schema" (username, password, email, etc.).
+
+Implementation of "Login" (checks if the username and password match those in the database).
+
+User session verification (checking the cookie).
+
+Implementation of "Logout".
+
+Implementation of "Register".
+
+Implementation of user profile editing.
+
+P.S. Work in progress:
+On the "Posts" page, the POST button is implemented but does not function yet.
+
+On the "Home" page, there is no feed.
+
+On the "Profile" page, you cannot edit your profile picture yet.
+
+More aesthetic messages/alerts need to be added.
