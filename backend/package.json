@@ -7,13 +7,15 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "sudo service mongod start && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
-    "mongoose": "^9.0.0"
+    "mongoose": "^9.0.0",
+    "require": "^2.4.20"
   }
 }

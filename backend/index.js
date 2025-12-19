@@ -61,16 +61,16 @@ app.post("/login", (req, res) => {
         .then(user => {
             if (user) {
                 if (user.password === password) {
-                    // Save user to session
+                   
                     req.session.userId = user._id;
                     req.session.username = user.username;
                     
                     res.json({ status: "Succes", message: "Login OK", user: user });
                 } else {
-                    res.json({ status: "Error", message: "Parola gresita" });
+                    res.json({ status: "Error", message: "Valeu! Parola gresita" });
                 }
             } else {
-                res.json({ status: "Error", message: "Userul nu exista" });
+                res.json({ status: "Error", message: "Valeu! N-am gasit acest user" });
             }
         });
 });
