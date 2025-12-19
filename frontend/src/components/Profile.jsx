@@ -56,7 +56,7 @@ function ProfilePage({ username, setGlobalUsername }) {
       <h1>{isEditing ? "Edit Your Profile" : "Your Profile"}</h1>
       
       <div className='profile-picture'>
-        <img src="/src/assets/images/profilepic.PNG" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src="/src/assets/images/profilepic.png" alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
       
       <div className='profile-container'>
