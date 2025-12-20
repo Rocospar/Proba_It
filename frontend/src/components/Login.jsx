@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage ({ username, setUsername, password, setPassword, handleLogin }) {
-    return (
+  const navigate = useNavigate();
+  
+  return (
     <div className="background">
       <div className="header-bar">
           <div className="logo-container">
@@ -12,14 +16,13 @@ function LoginPage ({ username, setUsername, password, setPassword, handleLogin 
 
           <div className="login-buttons-container">
             <div className="login-buttons">
-                <button>Home</button>
-                <button>Login</button>
-                <button>Register</button>
+                <button onClick={() => navigate('/Home')}>Best Grills</button>
+                <button onClick={() => navigate('/Login')}>Login</button>
+                <button onClick={() => navigate('/Register')}>Register</button>
               </div>
-
-
           </div>
       </div>
+
       <div className="LoginSquare">
         <h1 className="FontLogin">
           Bine ai revenit <br /> mare grătaragiu!

@@ -27,9 +27,14 @@
     display: flex;
     justify-content: center; 
     align-items: center;    
-    height: 100vh;           
+    height: 98vh;           
     width: 100%; 
-    background-image: url("./assets/images/background.png");        
+    background-image: url("./assets/images/background.png");    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;   
+
+    
 }
 .FontLogin{
   width: 100%;
@@ -50,6 +55,8 @@
   height: 503px;
   padding: 40px;
 
+  margin-top: 10px;
+  
   border-radius: 25px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
   
@@ -165,20 +172,94 @@
 }
 .RegisterSquare{
 
-  background-color: white;
-    width: 350px;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    
-    text-align: center; 
-    animation: fadeIn 1.5s forwards;
-   
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+  background-color: #721D08;
+  width: 503px;
+  height: 503px;
+  padding: 40px;
 
+  margin-top: 10px;
+
+  
+  border-radius: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  
+  text-align: center; 
+  animation: fadeIn 1.5s forwards;
+ 
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  font-family: 'Montserrat',sans-serif;
+  color: white;
+  align-items: center;
+}
+.RegisterSquare input{
+width: 400px;
+padding: 15px 40px 15px 70px;
+color: white;
+  
+font-size: 20px;
+
+border: none;
+border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
+
+background-repeat: no-repeat, no-repeat;
+background-color: transparent;
+background-position: 10px center, center bottom; 
+
+transition: background-size 0.5s ease;
+}
+.RegisterSquare input[type="text"]{
+  background-image: url("./assets/images/person.png"), linear-gradient(white, white);
+  background-size: 30px 34px, 0% 2px;
+
+}
+.RegisterSquare input[type="text"]:hover {
+  background-size: 30px 34px, 100% 2px;
+  outline: none;
+}
+.RegisterSquare input[type="tel"]{
+  background-image: url("./assets/images/phone.png"), linear-gradient(white, white);
+  background-size: 30px 35px, 0% 2px; 
+  outline: none;
+
+}
+.RegisterSquare input[type="tel"]:hover {
+  background-size: 30px 35px, 100% 2px;
+  outline: none;
+}
+.RegisterSquare button {
+  align-self: center; 
+  width: 344px; 
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #009c41; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.RegisterSquare input[type="email"] {
+  background-image: url("./assets/images/emailimage.png"), linear-gradient(white, white);
+  
+  background-size: 35px 30px, 0% 2px;
+
+}
+.RegisterSquare input[type="email"]:hover {
+  background-size: 35px 30px, 100% 2px;
+  outline: none;
+}
+.RegisterSquare input[type="password"]{
+  background-image: url("./assets/images/passwordimage.png"), linear-gradient(white, white);
+  background-size: 35px 44px, 0% 2px;
+}
+.RegisterSquare input[type="password"]:hover {
+  background-size: 35px 44px, 100% 2px;
+  outline: none;
+}
 form {
   display: flex;           
   flex-direction: column; 

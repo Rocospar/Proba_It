@@ -2,11 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 function RegisterPage() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [telephone, setTelephone] = useState('');
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
@@ -38,14 +40,28 @@ function RegisterPage() {
 
     return(
         <div className='background'>
+           <div className="header-bar">
+                <div className="logo-container">
+                    <span className="logo-text">Pimp your grill!</span>
+                    <div className="Logo"></div>
+                </div>
+                <div className="login-buttons-container">
+                    <div className="login-buttons">
+                        <button onClick={() => navigate('/Home')}>Best Grills</button>
+                        <button onClick={() => navigate('/Login')}>Login</button>
+                        <button onClick={() => navigate('/Register')}>Register</button>
+              </div>  
+                    </div>
+               </div>   
             <div className='RegisterSquare'>
-                 <h1>Register</h1>
+                 <h1>Gata sa devii sef la gratare?</h1>
                  <form onSubmit={handleRegister}>
-                     <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)}/>
-                     <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>  
-                     <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
-                     <input type="password" placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
-                     <button type='submit'>Create Account</button>
+                    <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)}/>
+                    <input type="tel" placeholder='Telephone' value={telephone} onChange={(e)=> setTelephone(e.target.value)}/>
+                    <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>  
+                    <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input type="password" placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
+                    <button type='submit'>Create Account</button>
                  </form>
             </div>
         </div>
