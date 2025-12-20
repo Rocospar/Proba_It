@@ -29,9 +29,18 @@ In the backend folder, we have the file **"index.js"**, where the user logic is 
 * Implementation of "Register".
 * Implementation of user profile editing.
 
-### P.S. Work in progress:
+## P.S. Work in progress:
 
 * On the **"Posts"** page, the **POST** button is implemented but does not function yet.
 * On the **"Home"** page, there is no feed.
 * On the **"Profile"** page, you cannot edit your profile picture yet.
 * More aesthetic messages/alerts need to be added.
+
+## What I learned:
+
+* Working with classes and objects.
+* Designing with CSS.
+* Animations with CSS.
+* Targeting specific CSS elements (:: and nth-of-type).
+* Working with a local database.
+
