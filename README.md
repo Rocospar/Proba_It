@@ -43,4 +43,6 @@ In the backend folder, we have the file **"index.js"**, where the user logic is 
 * Animations with CSS.
 * Targeting specific CSS elements (:: and nth-of-type).
 * Working with a local database.
-
+* .JSON script tweaks.
+* Page routing
+* ...
