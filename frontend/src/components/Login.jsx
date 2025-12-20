@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 function LoginPage ({ username, setUsername, password, setPassword, handleLogin }) {
     return (
     <div className="background">
-
       <div className="header-bar">
           <div className="logo-container">
              <span className="logo-text">Pimp your grill!</span>
@@ -21,11 +20,6 @@ function LoginPage ({ username, setUsername, password, setPassword, handleLogin 
 
           </div>
       </div>
-
-
-
-
-
       <div className="LoginSquare">
         <h1 className="FontLogin">
           Bine ai revenit <br /> mare grătaragiu!
@@ -36,7 +30,7 @@ function LoginPage ({ username, setUsername, password, setPassword, handleLogin 
           <input 
             type="text"
             value={username} 
-            placeholder="Username"
+            placeholder="Email/Username"
             onChange={(e) => setUsername(e.target.value)}
 
           />
