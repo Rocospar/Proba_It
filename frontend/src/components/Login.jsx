@@ -1,57 +1,81 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; 
 
-function LoginPage ({ username, setUsername, password, setPassword, handleLogin }) {
-  const navigate = useNavigate();
+function LoginPage({ username, setUsername, password, setPassword, handleLogin, isLoggedIn, handleLogout }) {
   
+  const navigate = useNavigate();
+
   return (
-    <div className="background">
-      <div className="header-bar">
+    <div className="background" style={{ flexDirection: 'column' }}>
+       
+ 
+       <div className="header-bar">
           <div className="logo-container">
              <span className="logo-text">Pimp your grill!</span>
              <div className="Logo"></div>
           </div>
 
-          <div className="login-buttons-container">
-            <div className="login-buttons">
-                <button onClick={() => navigate('/Home')}>Best Grills</button>
-                <button onClick={() => navigate('/Login')}>Login</button>
-                <button onClick={() => navigate('/Register')}>Register</button>
-              </div>
+          <div className="header-buttons-container">
+            <div className="header-buttons">
+          
+                <button onClick={() => navigate('/')}>Best Grills</button>
+                
+              
+                {isLoggedIn ? (
+                  <>
+                  
+                    <button onClick={() => navigate('/profile')}>Profile</button>
+                    <button onClick={handleLogout} style={{ backgroundColor: 'red', border: 'none' }}>Logout</button>
+                  </>
+                ) : (
+                
+                  <>
+                    <button onClick={() => navigate('/login')}style={{ boxShadow: '0 0 0 2px white', borderRadius: '10px', padding: '8px 30px', transition: 'all 0.3s ease' }}>Login</button>
+                    <button onClick={() => navigate('/register')}>Register</button>
+                  </>
+                )}
+            </div>
           </div>
-      </div>
+       </div>
+      
 
-      <div className="LoginSquare">
-        <h1 className="FontLogin">
-          Bine ai revenit <br /> mare grătaragiu!
-        </h1>
-        
-        
-        <form onSubmit={handleLogin}>
-          <input 
-            type="text"
-            value={username} 
-            placeholder="Email/Username"
-            onChange={(e) => setUsername(e.target.value)}
 
-          />
-          <input
-            placeholder="Password"
-            type="password" 
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button type="submit">Login</button>
-          <div> 
-            <Link to="/register">Register</Link>
+      
+       <form className="LoginSquare" onSubmit={handleLogin} style={{ marginTop: '120px' }}>
+          
+          <div className="FontLogin">
+            Bine ai revenit <br /> mare grătaragiu!
           </div>
-        </form>
-      </div>
+
+          <div className="input-container">
+            <input 
+              type="text" 
+              placeholder="Email/Username" 
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="input-container">
+            <input 
+              type="password" 
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} 
+              required
+            />
+          </div>
+
+          <button type="submit" className="login-btn">Login</button>
+          
+          <Link to="/register" style={{ color: '#4a148c', textDecoration: 'none', marginTop: '10px' }}>
+            Register
+          </Link>
+       </form>
+
     </div>
-    );
-  }
+  );
+}
 
 export default LoginPage;

@@ -45,11 +45,11 @@ function RegisterPage() {
                     <span className="logo-text">Pimp your grill!</span>
                     <div className="Logo"></div>
                 </div>
-                <div className="login-buttons-container">
-                    <div className="login-buttons">
+                <div className="header-buttons-container">
+                    <div className="header-buttons">
                         <button onClick={() => navigate('/Home')}>Best Grills</button>
                         <button onClick={() => navigate('/Login')}>Login</button>
-                        <button onClick={() => navigate('/Register')}>Register</button>
+                        <button onClick={() => navigate('/Register')} style={{ boxShadow: '0 0 0 2px white', borderRadius: '10px', padding: '8px 30px', transition: 'all 0.3s ease' }}>Register</button>
               </div>  
                     </div>
                </div>   

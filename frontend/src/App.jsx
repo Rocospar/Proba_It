@@ -29,31 +29,30 @@ function App() {
     };
     checkSession();
   }, []);
-
   const handleLogin = async (e) => {
     e.preventDefault(); 
+    console.log("Attempting login with:", username, password); 
 
     try {
-      
       const response = await fetch('http://localhost:1234/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
         body: JSON.stringify({ username, password }),
       });
-
       const data = await response.json();
+      
+      console.log("Server response:", data); 
 
-     
-      if (data.status === "Succes") {
-        
+      if (data.status === "Succes") { 
+        console.log("Login Successful! Switching state..."); 
         setIsLoggedIn(true);
       } else {
         alert(data.message); 
       }
     } catch (err) {
       console.error(err);
-      alert("Eroare: Nu mă pot conecta la serverul backend (Port 1234)!");
+      alert("Connection Error!");
     }
   };
 
@@ -75,7 +74,6 @@ function App() {
   if (loading) {
     return <div style={{ padding: '20px' }}>Loading...</div>;
   }
-
   return <AppRouter 
     isLoggedIn={isLoggedIn}
     username={username}
@@ -86,5 +84,4 @@ function App() {
     handleLogout={handleLogout}
   />;
 }
-
 export default App;
