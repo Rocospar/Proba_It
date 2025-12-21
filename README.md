@@ -46,3 +46,4 @@ In the backend folder, we have the file **"index.js"**, where the user logic is 
 * .JSON script tweaks.
 * Page routing
 * Better understanding of display: flexbox and space-between
+* Desiging using Figma
