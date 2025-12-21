@@ -7,6 +7,7 @@ function ProfilePage({ username, setGlobalUsername }) {
   const [editName, setEditName] = useState(username);
   const [editEmail, setEditEmail] = useState(''); 
   const [editPassword, setEditPassword] = useState('');
+  const [editTelephone, SetEditTelephone] = useState('');
 
   useEffect(() => {
     fetch("http://localhost:1234/user-data", { credentials: "include" })
@@ -65,7 +66,8 @@ function ProfilePage({ username, setGlobalUsername }) {
           // VIEW MODE
           <>
             <p><strong>Username:</strong> {username}</p>
-            <p><strong>Email:</strong> {editEmail || "Loading..."}</p>
+            <p><strong>Email:</strong> {editEmail || "No Email set"}</p>
+            <p><strong>Telephone:</strong>{editTelephone || "No phone number introduced"}</p>
             <p><strong>Member Since:</strong> 2025</p>
             
             <button 
@@ -94,6 +96,14 @@ function ProfilePage({ username, setGlobalUsername }) {
                 onChange={(e) => setEditEmail(e.target.value)}
                 style={styles.input}
              />
+             <input 
+                type="tel"
+                placeholder="Telephone"
+                value={editTelephone}
+                onChange={(e) => SetEditTelephone(e.target.value)}
+                style={styles.input}
+              />
+    
              <div style={{ display: 'flex', gap: '10px' }}>
                 <button onClick={handleSave} style={styles.buttonSuccess}>Save</button>
                 <button onClick={() => setIsEditing(false)} style={styles.buttonDanger}>Cancel</button>
